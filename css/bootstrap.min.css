@@ -2832,16 +2832,17 @@ textarea.input-sm, textarea.form-group-sm .form-control, select[multiple].input-
 }
 
 .input-lg, .form-group-lg .form-control {
-    height: 46px;
-    padding: 10px 16px;
+    height: 44px;
+    padding: 10px 10px;
     font-size: 18px;
-    line-height: 1.33;
-    border-radius: 6px
+    line-height: 1.35;
+    border-radius: 8px;
+    text-align: left;
 }
 
 select.input-lg, select.form-group-lg .form-control {
     height: 46px;
-    line-height: 46px
+    line-height: 44px
 }
 
 textarea.input-lg, textarea.form-group-lg .form-control, select[multiple].input-lg, select[multiple].form-group-lg .form-control {

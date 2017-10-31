@@ -23,8 +23,9 @@
         <!--[if lt IE 9]>
         <script src="js/html5shiv.min.js"></script>
         <script src="js/respond.min.js"></script>
-
         <![endif]-->
+
+        <script src="script/login.js"></script>
     </head>
 
     <body data-spy="scroll" data-target=".main-nav">
@@ -49,7 +50,7 @@
                                 <div class="icon-feature-icon" align="right"><i class="fa fa-comments-o"></i></div>
                             </div>
                             <div class="col-lg-6" align="left">
-                                <input type="text" placeholder="name" class="input-lg">
+                                <input id="username" type="text" placeholder="name" class="input-lg">
                             </div>
                             <div class="col-lg-12"> </div>
                         </p>
@@ -59,14 +60,14 @@
                                 <div class="icon-feature-icon" align="right"><i class="fa fa-key"></i></div>
                             </div>
                             <div class="col-lg-6" align="left">
-                                <input type="password" placeholder="password" class="input-lg">
+                                <input id="password" type="password" placeholder="password" class="input-lg">
                             </div>
                             <div class="col-lg-12"> </div>
                         </p>
                         <p>
-                            <div class="col-lg-2"> </div>
+                            <div class="col-lg-2"></div>
                             <div class="col-lg-2">
-                                <button class="btn btn-default-a">Sign In</button>
+                                <button id="signIn" class="btn btn-default-a">Sign In</button>
                             </div>
                             <div class="col-lg-2">
                                 <a class="btn btn-default" href="welcome.html">cancel</a>

@@ -1,6 +1,11 @@
-$(document).ready(function() {
+$().ready(function () {
     $("#signIn").click(function() {
-        alert('click!');
+        console.log('h');
+        swal({
+            title: "You have to Login!",
+            text: "Please input your name and password!",
+            type: "error"
+        });
         // let username = $("#username").val();
         // let password = $("#password").val();
         // login(username, password, function (message) {

@@ -17,7 +17,7 @@
     <link href="css/owl.transitions.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/menu.css" rel = "stylesheet" />
+    <link rel="stylesheet" href="css/editormd.css" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <script src="js/html5shiv.min.js"></script>
@@ -34,48 +34,37 @@
                 </div>
             </nav>
         </header>
-        <div style="padding: 125px 0;">
-            <div class="col-sm-3">
-                <dl class="list menu">
-                    <dt>Menu</dt>
-                    <dd><a><i class="icon-feature-icon"> + </i> 新建分类</a></dd>
-                    <dd><a href="#">操作系统</a></dd>
-                    <dd><a href="#">需求</a></dd>
-                    <dd><a href="#">构造</a></dd>
-                    <dd><a href="#">web</a></dd>
-                    <dd><a href="#">数据库</a></dd>
-                    <dd><a href="#">linux程序设计</a></dd>
-                    <dd><a href="#">嵌入式</a></dd>
-                    <dd> </dd>
-                    <dd> </dd>
-                    <dd> </dd>
-                    <dd> </dd>
-                </dl>
+        <div style="padding: 100px 0; height: 400px">
+            <div id="test-editormd">
+                <textarea style="display:none;"></textarea>
             </div>
-            <div class="col-sm-2">
-                <dl class="list article_menu">
-                    <dt>Article</dt>
-                    <dd><a href="#">Ana-kyu</a></dd>
-                    <dd><a href="#">Chutoro</a></dd>
-                    <dd><a href="#">Kaiware</a></dd>
-                    <dd><a href="#">Kampyo</a></dd>
-                    <dd><a href="#">Kappa</a></dd>
-                    <dd><a href="#">Natto</a></dd>
-                    <dd><a href="#">Negitoro</a></dd>
-                    <dd><a href="#">Oshinko</a></dd>
-                    <dd><a href="#">Otoro</a></dd>
-                    <dd><a href="#">Tekka</a></dd>
-                    <dd> </dd>
-                    <dd> </dd>
-                </dl>
-            </div>
-
-            <div class="col-sm-7">
-
+            <div>
+                <a style="margin-left: 35%" class="btn btn-default-a"> Save </a>
+                <a href="note.html" style="margin-left: 14%;" class="btn btn-default-a">Return</a>
             </div>
         </div>
+
         <script src='js/jquery.js'></script>
-        <script src="feature_js/menu.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/editormd.js"></script>
+        <script type="text/javascript">
+            var testEditor;
+
+            $(function() {
+                // You can custom @link base url.
+                editormd.urls.atLinkBase = "https://github.com/";
+
+                testEditor = editormd("test-editormd", {
+                    width     : "85%",
+                    height    : 515,
+                    toc       : true,
+                    //atLink    : false,    // disable @link
+                    //emailLink : false,    // disable email address auto link
+                    todoList  : true,
+                    path      : 'lib/'
+                });
+            });
+        </script>
     </body>
 
 </html>

@@ -193,17 +193,17 @@
                         for (var x = 0; x < rowNumber; x++)
                         {
                             var emoji = $.trim(data[(i * rowNumber) + x]);
-                            
+
                             if (typeof emoji !== "undefined" && emoji !== "")
                             {
                                 var img = "", icon = "";
-                                
+
                                 if (type === "github-emoji")
                                 {
                                     var src = (emoji === "+1") ? "plus1" : emoji;
                                     src     = (src === "black_large_square") ? "black_square" : src;
                                     src     = (src === "moon") ? "waxing_gibbous_moon" : src;
-                                    
+
                                     src     = exports.emoji.path + src + exports.emoji.ext;
                                     img     = "<img src=\"" + src + "\" width=\"24\" class=\"emoji\" title=\"&#58;" + emoji + "&#58;\" alt=\"&#58;" + emoji + "&#58;\" />";
                                     row += "<a href=\"javascript:;\" value=\":" + emoji + ":\" title=\":" + emoji + ":\" class=\"" + classPrefix + "emoji-btn\">" + img + "</a>";
@@ -227,7 +227,7 @@
                             }
                             else
                             {
-                                row += "<a href=\"javascript:;\" value=\"\"></a>";                        
+                                row += "<a href=\"javascript:;\" value=\"\"></a>";
                             }
                         }
 
@@ -237,10 +237,10 @@
                     }
 
                     table += "</div>";
-                    
+
                     return table;
                 };
-                
+
                 if (emojiTabIndex === 0)
                 {
                     for (var i = 0, len = $data.length; i < len; i++)

@@ -6,11 +6,16 @@
  * Time: 下午11:17
  */
 
+require('datautil.php');
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if ($username === "huangxiao") {
-    return $password . " " . "success!";
+$sql = "select * from user where username='" . $username . "' and password='" . $password . "';";
+
+$res = $db->query($sql);
+if (count($res->fetchArray()) == 0) {
+    echo '登录失败';
 } else {
-    return $password . " " . "fail!";
+    echo '登录成功';
 }

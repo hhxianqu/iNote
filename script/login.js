@@ -1,10 +1,20 @@
 $().ready(function () {
     $("#signIn").click(function() {
-        console.log('h');
+        // console.log('h');
         let username = $("#username").val();
         let password = $("#password").val();
         login(username, password, function (message) {
-            swal(message);
+            if(message){
+                window.location.href = 'note.html';
+            }
+            else {
+                swal({
+                    title: "Fail!",
+                    // text: "",
+                    type: "error",
+                    confirmButtonText: "Confirm"
+                })
+            }
         });
     });
 });

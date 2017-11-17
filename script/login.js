@@ -5,7 +5,18 @@ $().ready(function () {
         let password = $("#password").val();
         login(username, password, function (message) {
             if(message){
-                window.location.href = 'note.html';
+                swal({
+                    title: "Success!",
+                    type: "success",
+                    confirmButtonText: "Confirm",
+                    closeOnConfirm: false
+                },
+                    function(isConfirm){
+                        if(isConfirm){
+                            window.location.href = 'note.html';
+                        }
+                    })
+
             }
             else {
                 swal({

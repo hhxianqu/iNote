@@ -18,6 +18,8 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/editormd.css" />
+    <link href="css/text_input.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <script src="js/html5shiv.min.js"></script>
@@ -25,6 +27,7 @@
 
 </head>
     <body>
+
         <header class="st-navbar">
             <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
                 <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
@@ -34,7 +37,16 @@
                 </div>
             </nav>
         </header>
+
         <div style="padding: 100px 0; height: 400px">
+            <div align="center">
+                <span class="input input--hoshi">
+                <input class="input__field input__field--hoshi" type="text" id="input-4" />
+                <label class="input__label input__label--hoshi input__label--hoshi-color" for="input-4">
+                    <span class="input__label-content input__label-content--hoshi">Title</span>
+                </label>
+            </span>
+            </div>
             <div id="test-editormd">
                 <textarea style="display:none;"></textarea>
             </div>
@@ -112,21 +124,23 @@
             });
         </script>
 
-        <script type="text/javascript">
-            $(function() {
-                $.get("./test.md", function(md) {
-                    var testEditor = editormd("test-editormd", {
-                        path   : "lib/",
-                        appendMarkdown : md,
-                        saveHTMLToTextarea : true
-                    });
-                });
+        <!--<script type="text/javascript">-->
+            <!--$(function() {-->
+                <!--$.get("./test.md", function(md) {-->
+                    <!--var testEditor = editormd("test-editormd", {-->
+                        <!--path   : "lib/",-->
+                        <!--appendMarkdown : md,-->
+                        <!--saveHTMLToTextarea : true-->
+                    <!--});-->
+                <!--});-->
 
-//                testEditor.getMarkdown();       // 获取 Markdown 源码
-//                testEditor.getHTML();           // 获取 Textarea 保存的 HTML 源码
-//                testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 watch 且没有开启 saveHTMLToTextarea 时使用
-            });
-        </script>
+<!--//                testEditor.getMarkdown();       // 获取 Markdown 源码-->
+<!--//                testEditor.getHTML();           // 获取 Textarea 保存的 HTML 源码-->
+<!--//                testEditor.getPreviewedHTML();  // 获取预览窗口里的 HTML，在开启 watch 且没有开启 saveHTMLToTextarea 时使用-->
+            <!--});-->
+        <!--</script>-->
+
+
     </body>
 
 </html>

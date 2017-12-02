@@ -11,7 +11,7 @@ require('datautil.php');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$sql = "select count(*) from user where username='" . $username . "' and password='" . $password . "';";
+$sql = "select count(*) from user where username='$username' and password='$password';";
 
 $res = $db->querySingle($sql);
 

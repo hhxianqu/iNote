@@ -8,4 +8,20 @@
 
 require('datautil.php');
 
-// TODO
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$sql = "select count(*) from user where username='$username'";
+
+if (!$db->querySingle($sql)) {
+    $sql = "insert into user (username, password) values ('$username', '$password');";
+    $res = $db->exec($sql);
+    if ($res) {
+        echo 'Sign up successfully';
+    } else {
+        echo $db->lastErrorMsg();
+    }
+} else {
+    // 用户名已存在
+    echo 'Username already exists';
+}

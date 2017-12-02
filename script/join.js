@@ -8,28 +8,28 @@ $().ready(function () {
             // TODO 两次密码输入不一致
         }
         signUp(username, password1, function (message) {
-            // if(message){
-            //     swal({
-            //             title: "Success!",
-            //             type: "success",
-            //             confirmButtonText: "Confirm",
-            //             closeOnConfirm: false
-            //         },
-            //         function(isConfirm){
-            //             if(isConfirm){
-            //                 window.location.href = 'note.html';
-            //             }
-            //         })
-            //
-            // }
-            // else {
-            //     swal({
-            //         title: "Fail!",
-            //         // text: "",
-            //         type: "error",
-            //         confirmButtonText: "Confirm"
-            //     })
-            // }
+            if(message){
+                swal({
+                        title: "Success!",
+                        type: "success",
+                        confirmButtonText: "Confirm",
+                        closeOnConfirm: false
+                    },
+                    function(isConfirm){
+                        if(isConfirm){
+                            window.location.href = 'note.html';
+                        }
+                    })
+
+            }
+            else {
+                swal({
+                    title: "Fail!",
+                    // text: "",
+                    type: "error",
+                    confirmButtonText: "Confirm"
+                })
+            }
         });
     });
 });

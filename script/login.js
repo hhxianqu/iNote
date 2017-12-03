@@ -1,9 +1,11 @@
 $().ready(function () {
+    hideAllDiv();
+    // console.log("s");
     $("#signIn").click(function() {
         let username = $("#username").val();
         let password = $("#password").val();
         if (username === "") {
-            console.log("s")
+            showDiv("nameWarning");
         } else {
             login(username, password, function (message) {
                 if(message){
@@ -52,4 +54,19 @@ function login(username, password, callback) {
             console.log(testStatus);
         }
     });
+}
+
+
+function hideDiv(divName) {
+    let dif = document.getElementById(divName);
+    dif.style.display = "none";
+}
+
+function hideAllDiv() {
+    hideDiv("nameWarning");
+    hideDiv("pasWarning");
+}
+function showDiv(divName) {
+    let dif = document.getElementById(divName);
+    dif.style.display = "block";
 }

@@ -1,32 +1,36 @@
 $().ready(function () {
     $("#signIn").click(function() {
-        // console.log('h');
         let username = $("#username").val();
         let password = $("#password").val();
-        login(username, password, function (message) {
-            if(message){
-                swal({
-                    title: "Success!",
-                    type: "success",
-                    confirmButtonText: "Confirm",
-                    closeOnConfirm: false
-                },
-                    function(isConfirm){
-                        if(isConfirm){
-                            window.location.href = 'note.html';
-                        }
-                    })
+        if (username === "") {
+            console.log("s")
+        } else {
+            login(username, password, function (message) {
+                if(message){
+                    swal({
+                            title: "Success!",
+                            type: "success",
+                            confirmButtonText: "Confirm",
+                            closeOnConfirm: false
+                        },
+                        function(isConfirm){
+                            if(isConfirm){
+                                window.location.href = 'note.html';
+                            }
+                        })
 
-            }
-            else {
-                swal({
-                    title: "Fail!",
-                    // text: "",
-                    type: "error",
-                    confirmButtonText: "Confirm"
-                })
-            }
-        });
+                }
+                else {
+                    swal({
+                        title: "Fail!",
+                        // text: "",
+                        type: "error",
+                        confirmButtonText: "Confirm"
+                    })
+                }
+            });
+        }
+
     });
 });
 

@@ -51,14 +51,14 @@ function login(username, password, callback) {
             username: username,
             password: password
         },
-        success: function (result) {
+        success: function (result, status, xhr) {
             if (callback) {
                 callback(result);
             }
         },
-        error: function (XMLHttpRequest, testStatus, errorThrown) {
-            console.log(XMLHttpRequest.staus);
-            console.log(testStatus);
+        error: function (xhr, status, error) {
+            console.log(xhr.status);
+            console.log(status);
         }
     });
 }

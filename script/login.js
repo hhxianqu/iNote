@@ -8,22 +8,22 @@ $().ready(function () {
             showDiv("nameWarning");
             return;
         }
-        login(username, password, function (message) {
-            if(message){
+        login(username, password, function (response) {
+            if(response.isNormal) {
                 swal({
-                        title: "Success!",
+                        title: response.message,
                         type: "success",
                         confirmButtonText: "Confirm",
                         closeOnConfirm: false
                     },
-                    function(isConfirm){
-                        if(isConfirm){
+                    function(isConfirm) {
+                        if(isConfirm) {
                             window.location.href = 'note.html';
                         }
                     })
             } else {
                 swal({
-                    title: "Fail!",
+                    title: response.message,
                     // text: "",
                     type: "error",
                     confirmButtonText: "Confirm"

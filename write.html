@@ -48,15 +48,16 @@
             </span>
             </div>
             <div id="test-editormd">
-                <textarea style="display:none;"></textarea>
+                <textarea name="test-editormd-markdown-doc"></textarea>
+                <textarea name="test-editormd-html-code"></textarea>
             </div>
             <div>
-                <a style="margin-left: 35%" class="btn btn-default-a"> Save </a>
+                <a style="margin-left: 35%" class="btn btn-default-a" id="submit"> Save </a>
                 <a href="note.html" style="margin-left: 14%;" class="btn btn-default-a">Return</a>
             </div>
         </div>
 
-        <script src='js/jquery.js'></script>
+        <!--<script src='js/jquery.js'></script>-->
         <script src="js/jquery.min.js"></script>
         <script src="js/editormd.js"></script>
         <script type="text/javascript">
@@ -73,7 +74,27 @@
                     //atLink    : false,    // disable @link
                     //emailLink : false,    // disable email address auto link
                     todoList  : true,
-                    path      : 'lib/'
+                    path      : 'lib/',
+                    saveHTMLToTextarea : true
+                });
+            });
+
+            $("#submit").click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/iNote/php/post.php',
+                    data: {
+                        submit  : "",
+                        markdown: testEditor.getMarkdown(),
+                        html    : testEditor.getHTML()
+                    },
+                    success: function (result) {
+                        console.log(result);
+                    },
+                    error: function (XMLHttpRequest, testStatus, errorThrown) {
+                        console.log(XMLHttpRequest.staus);
+                        console.log(testStatus);
+                    }
                 });
             });
         </script>
@@ -82,7 +103,6 @@
             var testEditor;
 
             $(function() {
-
                 // You can custom Emoji's graphics files url path
                 editormd.emoji     = {
                     path  : "images/emoji/",
@@ -103,6 +123,7 @@
                 });
             });
         </script>
+
         <!--上传图片-->
         <script type="text/javascript">
             $(function() {

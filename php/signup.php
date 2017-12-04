@@ -6,7 +6,10 @@
  * Time: 下午10:09
  */
 
+header("Content-Type:application/json;charset=utf-8");
+
 require('datautil.php');
+require('Response.php');
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -14,14 +17,19 @@ $password = $_POST['password'];
 $sql = "select count(*) from user where username='$username'";
 
 if (!$db->querySingle($sql)) {
+
     $sql = "insert into user (username, password) values ('$username', '$password');";
     $res = $db->exec($sql);
+
     if ($res) {
-        echo 'Sign up successfully';
+        $response = new Response(true, "注册成功");
+        echo $response->toJson();
     } else {
-        echo $db->lastErrorMsg();
+        $response = new Response(false, $db->lastErrorMsg());
+        echo $response->toJson();
     }
 } else {
     // 用户名已存在
-    echo 'Username already exists';
+    $response = new Response(false, "用户名已存在");
+    echo $response->toJson();
 }

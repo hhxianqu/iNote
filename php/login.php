@@ -6,7 +6,10 @@
  * Time: 下午11:17
  */
 
-require('datautil.php');
+header("Content-Type:application/json;charset=utf-8");
+
+require ('datautil.php');
+require ('Response.php');
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -14,5 +17,11 @@ $password = $_POST['password'];
 $sql = "select count(*) from user where username='$username' and password='$password';";
 
 $res = $db->querySingle($sql);
-
-echo $res;
+if ($res === 1) {
+    setcookie("user", $username, time() + 60);
+    $response = new Response(true, "登录成功");
+    echo $response->toJson();
+} else {
+    $response = new Response(false, "登录失败");
+    echo $response->toJson();
+}

@@ -6,10 +6,4 @@
  * Time: 上午12:07
  */
 
-require ('datautil.php');
-
-$username = 'hehuixian';
-$password = 'password';
-
-$sql = "insert into user (username, password) values ('$username', '$password');";
-$db->exec($sql);
+//require ('Response.php');

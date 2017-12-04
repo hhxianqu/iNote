@@ -40,12 +40,21 @@
 
         <div style="padding: 100px 0; height: 400px">
             <div align="center">
-                <span class="input input--hoshi">
-                <input class="input__field input__field--hoshi" type="text" id="input-4" />
-                <label class="input__label input__label--hoshi input__label--hoshi-color" for="input-4">
+                <div id="title" style="display: none">
                     <span class="input__label-content input__label-content--hoshi">Title</span>
-                </label>
-            </span>
+                </div>
+                <span class="input input--hoshi">
+                    <input class="input__field input__field--hoshi" type="text" id="input-4" placeholder="Title" onblur="hideTitle()"  onclick="showTitle()"/>
+                        <script>
+                            function showTitle() {
+                                document.getElementById("title").style.display = "block" ;
+                            }
+                            function hideTitle() {
+                                document.getElementById("title").style.display = "none";
+                            }
+                        </script>
+                    <label class="input__label input__label--hoshi input__label--hoshi-color" for="input-4"></label>
+                </span>
             </div>
             <div id="test-editormd">
                 <textarea name="test-editormd-markdown-doc"></textarea>

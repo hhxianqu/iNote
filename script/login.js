@@ -63,17 +63,26 @@ function login(username, password, callback) {
     });
 }
 
-
+/**
+ * 隐藏div提示
+ * @param divName
+ */
 function hideDiv(divName) {
     let dif = document.getElementById(divName);
     dif.style.display = "none";
 }
-
+/**
+ * 隐藏所有div
+ */
 function hideAllDiv() {
     hideDiv("nameWarning");
     hideDiv("pasWarning");
 }
 
+/**
+ * 显示div提示
+ * @param divName
+ */
 function showDiv(divName) {
     let dif = document.getElementById(divName);
     dif.style.display = "block";

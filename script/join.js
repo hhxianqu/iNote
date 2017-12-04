@@ -21,10 +21,10 @@ $().ready(function () {
             showDiv("pasWarning1");
             return;
         }
-        signUp(username, password1, function (message) {
-            if(message){
+        signUp(username, password1, function (response) {
+            if(response.isNormal) {
                 swal({
-                        title: "Success!",
+                        title: response.message,
                         type: "success",
                         confirmButtonText: "Confirm",
                         closeOnConfirm: false
@@ -36,7 +36,7 @@ $().ready(function () {
                     })
             } else {
                 swal({
-                    title: "Fail!",
+                    title: response.message,
                     // text: "",
                     type: "error",
                     confirmButtonText: "Confirm"

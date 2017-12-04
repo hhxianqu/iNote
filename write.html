@@ -84,12 +84,13 @@
                     type: 'POST',
                     url: '/iNote/php/post.php',
                     data: {
-                        submit  : "",
-                        markdown: testEditor.getMarkdown(),
+                        submit: "",
+                        title: "Test Note",
+                        username: "huangxiao",
                         html    : testEditor.getHTML()
                     },
                     success: function (result, status, xhr) {
-                        console.log(result);
+                        alert(result.message);
                     },
                     error: function (xhr, status, error) {
                         console.log(xhr.status);
@@ -132,7 +133,6 @@
                     imageUpload : true,
                     imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                     imageUploadURL : "./php/upload.php",
-
 
 //                     上传的后台只需要返回一个 JSON 数据，结构如下：
 //                     {

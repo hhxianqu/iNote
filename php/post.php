@@ -6,12 +6,31 @@
  * Time: 上午11:03
  */
 
-header("Content-Type:text/html;charset=utf-8");
+header("Content-Type:application/json;charset=utf-8");
+
+require ('datautil.php');
+require ('Response.php');
+
+date_default_timezone_set('PRC');
 
 if (isset($_POST['submit'])) {
-    echo "<pre>";
-    echo htmlspecialchars($_POST["markdown"]);
-    echo "<br/><br/>";
-    echo htmlspecialchars($_POST["html"]);
-    echo "</pre>";
+
+    $username = $_POST["username"];
+    $title = $_POST["title"];
+    $content = $_POST["html"];
+    $time = date("Y-m-d H:i:s");
+
+    $sql = "insert into 
+            note(username, title, content, time) 
+            values ('$username', '$title', '$content', '$time');";
+
+    $res = $db->exec($sql);
+    if ($res) {
+        $response = new Response(true, "提交成功");
+        echo $response->toJson();
+    } else {
+        $response = new Response(false, $db->lastErrorMsg());
+        echo $response->toJson();
+    }
+
 }

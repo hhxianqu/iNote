@@ -11,7 +11,8 @@ $().ready(function () {
         login(username, password, function (response) {
             if(response.isNormal) {
                 swal({
-                        title: response.message,
+                        title: "Success",
+                        text: response.message,
                         type: "success",
                         confirmButtonText: "Confirm",
                         closeOnConfirm: false
@@ -23,7 +24,8 @@ $().ready(function () {
                     })
             } else {
                 swal({
-                    title: response.message,
+                    title: "Fail",
+                    text: response.message,
                     // text: "",
                     type: "error",
                     confirmButtonText: "Confirm"

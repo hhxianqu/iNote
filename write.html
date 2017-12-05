@@ -18,7 +18,8 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="css/editormd.css" />
-    <link href="css/text_input.css" rel="stylesheet">
+    <link href="css/text_input.css" rel="stylesheet"/>
+    <link href="css/sweet-alert.css" rel="stylesheet"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,23 +40,27 @@
         </header>
 
         <div style="padding: 100px 0; height: 400px">
+            <div id="title" style="display: none">
+                <span class="input__label-content input__label-content--hoshi" style="margin-left: 35%">Title</span>
+            </div>
             <div align="center">
-                <div id="title" style="display: none">
-                    <span class="input__label-content input__label-content--hoshi">Title</span>
-                </div>
                 <span class="input input--hoshi">
-                    <input class="input__field input__field--hoshi" type="text" id="input-4" placeholder="Title" onblur="hideTitle()"  onclick="showTitle()"/>
+                    <input class="input__field input__field--hoshi" type="text" id="input-4" placeholder="Title" onblur="hideTitle()"  onclick="showTitle()" style="text-align: center"/>
                         <script>
                             function showTitle() {
                                 document.getElementById("title").style.display = "block" ;
                             }
                             function hideTitle() {
-                                document.getElementById("title").style.display = "none";
+                                let title = $("#input-4").val();
+                                if (title === "") {
+                                    document.getElementById("title").style.display = "none";
+                                }
                             }
                         </script>
                     <label class="input__label input__label--hoshi input__label--hoshi-color" for="input-4"></label>
                 </span>
             </div>
+
             <div id="test-editormd">
                 <textarea name="test-editormd-markdown-doc"></textarea>
                 <textarea name="test-editormd-html-code"></textarea>
@@ -69,6 +74,7 @@
         <!--<script src='js/jquery.js'></script>-->
         <script src="js/jquery.min.js"></script>
         <script src="js/editormd.js"></script>
+        <script src="js/sweet-alert.js"></script>
         <script type="text/javascript">
             var testEditor;
 
@@ -89,14 +95,26 @@
             });
 
             $("#submit").click(function () {
+                let title = $("#title").val();
+                if (title === "") {
+                    swal({
+                        title: "Fail",
+                        type: "error",
+                        text: "标题不能为空",
+                        confirmButtonText: "Confirm",
+                        closeOnConfirm: true
+
+                    });
+                    return;
+                }
                 $.ajax({
                     type: 'POST',
                     url: '/iNote/php/post.php',
                     data: {
                         submit: "",
-                        title: "Test Note",
+                        title: title,
                         username: "huangxiao",
-                        html    : testEditor.getHTML()
+                        html    : testEditor.getHTML(),
                     },
                     success: function (result, status, xhr) {
                         alert(result.message);

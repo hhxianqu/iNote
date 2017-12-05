@@ -11,7 +11,7 @@
      * Copyright@2015 Editor.md all right reserved.
 	 */
 
-    //header("Content-Type:application/json; charset=utf-8"); // Unsupport IE
+//    header("Content-Type:application/json; charset=utf-8"); // Unsupport IE
     header("Content-Type:text/html; charset=utf-8");
     header("Access-Control-Allow-Origin: *");
 
@@ -25,7 +25,7 @@
 	$saveURL  = $url . '../uploads/';
 
 	$formats  = array(
-		'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp')
+		'image' => array('gif', 'jpg', 'jpeg', 'png', 'bmp', 'JPG', 'JPEG')
 	);
 
     $name = 'editormd-image-file';

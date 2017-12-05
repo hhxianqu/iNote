@@ -19,8 +19,8 @@
         public $saveName;                       // 最终保存的文件名
         public $saveURL;                        // 最终保存URL地址
         public $savePath;                       // 保存本地文件路径
-        public $randomLength   = '';            // 生成随机文件名的长度，当为日期时为日期的格式
-        public $randomNameType = 1;             // 生成随机的形式, NULL为保留原文件名, 1生成随机字符串, 2生成日期文件名
+        public $randomLength   = 'YmdHis';      // 生成随机文件名的长度，当为日期时为日期的格式
+        public $randomNameType = 1;             // 生成随机的形式, NULL为保留原文件名, 1生成时间格式, 2生成随机字符串
         public $formats = array(                // 允许上传的文件格式
             'gif', 'jpg', 'jpeg', 'png', 'bmp'
         );
@@ -217,6 +217,7 @@
 
         private function randomFileName()
         {
+            $fileName = "";
             if ($this->randomNameType == 1)        // 生成时间格式文件名
             {
                 date_default_timezone_set('PRC');  //设置时区

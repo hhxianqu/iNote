@@ -1,13 +1,20 @@
 $().ready(function () {
     hideAllDiv();
-    // console.log("s");
 });
 
 $("#signIn").click(function() {
     let username = $("#username").val();
     let password = $("#password").val();
+    let isCorrect = true;
     if (!isContentValid(username)) {
         showDiv("nameWarning");
+        isCorrect = false;
+    }
+    if (!isContentValid(password)) {
+        showDiv("pasWarning");
+        isCorrect = false;
+    }
+    if (!isCorrect) {
         return;
     }
     login(username, password, function (response) {
@@ -23,17 +30,25 @@ $("#signIn").click(function() {
                     if(isConfirm) {
                         window.location.href = 'note.html';
                     }
-                })
+                });
         } else {
             swal({
                 title: "Fail",
                 text: response.message,
-                // text: "",
                 type: "error",
                 confirmButtonText: "Confirm"
-            })
+            });
         }
     });
+});
+
+// TODO 无法隐藏
+$("#username").click(function () {
+   hideAllDiv();
+});
+
+$("#password").click(function () {
+    hideAllDiv();
 });
 
 /**
@@ -49,7 +64,7 @@ function isContentValid(content) {
 function login(username, password, callback) {
     $.ajax({
         type: 'POST',
-        url: '/iNote/php/login.php',
+        url: 'php/login.php',
         data: {
             username: username,
             password: password

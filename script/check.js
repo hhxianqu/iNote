@@ -2,12 +2,21 @@
  * Created by apple on 2017/12/5.
  */
 $().ready(function () {
-        let loc = location.href;
-        let n1 = loc.length;
-        let n2 = loc.indexOf("=");
-        let id = decodeURI(loc.substr(n2+1, n1-n2));
-        checkNote(id);
+    checkNote(getQueryVariable("id"));
 });
+
+function getQueryVariable(variable) {
+    let query = window.location.search.substring(1);
+    let vars = query.split("&");
+    for (let i = 0; i < vars.length; i++) {
+        let pair = vars[i].split("=");
+        if(pair[0] === variable) {
+            return pair[1];
+        }
+    }
+    return false;
+}
+
 function checkNote(id) {
     $.ajax({
         type: 'POST',
@@ -22,6 +31,5 @@ function checkNote(id) {
             console.log(xhr.status);
             console.log(status);
         }
-
-    })
+    });
 }

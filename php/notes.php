@@ -17,8 +17,18 @@ $result = array();
 $sql = "select * from note where username='$username' order by time desc;";
 $res = $db->query($sql);
 
+$i = 0;
 if ($res) {
     while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-        // TODO
+        $note = array(
+            "id"        =>  $row['id'],
+            "username"  =>  $row['username'],
+            "title"     =>  $row['title'],
+            "time"      =>  $row['time']
+        );
+        $result[$i++] = $note;
     }
+    echo json_encode($result);
+} else {
+    echo $result;
 }

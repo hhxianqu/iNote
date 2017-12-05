@@ -1,37 +1,38 @@
 $().ready(function () {
     hideAllDiv();
     // console.log("s");
-    $("#signIn").click(function() {
-        let username = $("#username").val();
-        let password = $("#password").val();
-        if (!isContentValid(username)) {
-            showDiv("nameWarning");
-            return;
-        }
-        login(username, password, function (response) {
-            if(response.isNormal) {
-                swal({
-                        title: "Success",
-                        text: response.message,
-                        type: "success",
-                        confirmButtonText: "Confirm",
-                        closeOnConfirm: false
-                    },
-                    function(isConfirm) {
-                        if(isConfirm) {
-                            window.location.href = 'note.html';
-                        }
-                    })
-            } else {
-                swal({
-                    title: "Fail",
+});
+
+$("#signIn").click(function() {
+    let username = $("#username").val();
+    let password = $("#password").val();
+    if (!isContentValid(username)) {
+        showDiv("nameWarning");
+        return;
+    }
+    login(username, password, function (response) {
+        if(response.isNormal) {
+            swal({
+                    title: "Success",
                     text: response.message,
-                    // text: "",
-                    type: "error",
-                    confirmButtonText: "Confirm"
+                    type: "success",
+                    confirmButtonText: "Confirm",
+                    closeOnConfirm: false
+                },
+                function(isConfirm) {
+                    if(isConfirm) {
+                        window.location.href = 'note.html';
+                    }
                 })
-            }
-        });
+        } else {
+            swal({
+                title: "Fail",
+                text: response.message,
+                // text: "",
+                type: "error",
+                confirmButtonText: "Confirm"
+            })
+        }
     });
 });
 

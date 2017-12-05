@@ -95,7 +95,7 @@
             });
 
             $("#submit").click(function () {
-                let title = $("#title").val();
+                let title = $("#input-4").val();
                 if (title === "") {
                     swal({
                         title: "Fail",
@@ -117,7 +117,13 @@
                         html    : testEditor.getHTML(),
                     },
                     success: function (result, status, xhr) {
-                        alert(result.message);
+                        if (result.isNormal) {
+                            // TODO 成功
+                            alert(result.message);
+                        } else {
+                            // TODO 失败
+                            alert(result.message);
+                        }
                     },
                     error: function (xhr, status, error) {
                         console.log(xhr.status);

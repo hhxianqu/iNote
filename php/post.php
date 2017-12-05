@@ -14,9 +14,9 @@ require ('Response.php');
 // 设置时区为东八区
 date_default_timezone_set('PRC');
 
-if (isset($_POST['submit'])) {
+if (isset($_COOKIE["user"])) {
 
-    $username = $_POST["username"];
+    $username = $_COOKIE["user"];
     $title = $_POST["title"];
     $content = $_POST["html"];
     $time = date("Y-m-d H:i:s");
@@ -33,5 +33,7 @@ if (isset($_POST['submit'])) {
         $response = new Response(false, $db->lastErrorMsg());
         echo $response->toJson();
     }
-
+} else {
+    $response = new Response(false, "您还未登录");
+    echo $response->toJson();
 }

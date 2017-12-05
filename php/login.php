@@ -18,7 +18,8 @@ $sql = "select count(*) from user where username='$username' and password='$pass
 
 $res = $db->querySingle($sql);
 if ($res === 1) {
-    setcookie("user", $username, time() + 60);
+    // cookie会话结束到期
+    setcookie("user", $username, 0, "/");
     $response = new Response(true, "登录成功");
     echo $response->toJson();
 } else {

@@ -11,6 +11,7 @@ header("Content-Type:application/json;charset=utf-8");
 require ('datautil.php');
 require ('Response.php');
 
+// 设置时区为东八区
 date_default_timezone_set('PRC');
 
 if (isset($_POST['submit'])) {

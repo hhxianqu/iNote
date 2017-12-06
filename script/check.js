@@ -25,6 +25,9 @@ function checkNote(id) {
             id: id,
         },
         success: function (result) {
+            document.getElementById("title").innerText = result.title;
+            document.getElementById("author").innerText = result.username;
+            document.getElementById("date").innerText = result.time;
             document.getElementById("details").innerHTML = result.content;
         },
         error: function (xhr, status, error) {

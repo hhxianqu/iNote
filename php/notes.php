@@ -11,7 +11,7 @@ header("Content-Type:application/json;charset=utf-8");
 require ('datautil.php');
 
 if (isset($_COOKIE["user"])) {
-    $username = $_COOKIE["name"];
+    $username = $_COOKIE["user"];
 
     $result = array();
 

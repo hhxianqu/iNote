@@ -2,7 +2,7 @@
  * Created by apple on 2017/12/5.
  */
 $().ready(function () {
-    preLoader("huangxiao");
+    preLoader();
     }
 );
 
@@ -10,13 +10,10 @@ $().ready(function () {
  * 加载用户笔记
  * @param username
  */
-function preLoader(username) {
+function preLoader() {
     $.ajax({
         type: 'POST',
         url: 'php/notes.php',
-        data:{
-            username: username,
-        },
         success: function (notesList) {
             // console.log(notesList);
             for (let i = 0; i < notesList.length; i++){

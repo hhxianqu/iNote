@@ -10,25 +10,27 @@ header("Content-Type:application/json;charset=utf-8");
 
 require ('datautil.php');
 
-$username = $_POST['username'];
+if (isset($_COOKIE["user"])) {
+    $username = $_COOKIE["name"];
 
-$result = array();
+    $result = array();
 
-$sql = "select * from note where username='$username' order by time desc;";
-$res = $db->query($sql);
+    $sql = "select * from note where username='$username' order by time desc;";
+    $res = $db->query($sql);
 
-$i = 0;
-if ($res) {
-    while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-        $note = array(
-            "id"        =>  $row['id'],
-            "username"  =>  $row['username'],
-            "title"     =>  $row['title'],
-            "time"      =>  $row['time']
-        );
-        $result[$i++] = $note;
+    $i = 0;
+    if ($res) {
+        while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+            $note = array(
+                "id"        =>  $row['id'],
+                "username"  =>  $row['username'],
+                "title"     =>  $row['title'],
+                "time"      =>  $row['time']
+            );
+            $result[$i++] = $note;
+        }
+        echo json_encode($result);
+    } else {
+        echo $result;
     }
-    echo json_encode($result);
-} else {
-    echo $result;
 }

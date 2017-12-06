@@ -16,12 +16,14 @@
     <link href="css/owl.theme.css" rel="stylesheet">
     <link href="css/owl.transitions.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/sweet-alert.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="js/html5shiv.min.js"></script>
     <script src="js/respond.min.js"></script>
+
 
     <![endif]-->
 </head>
@@ -52,12 +54,13 @@
                 <div class="row">
                     <ul class="nav navbar-right nav-tabs">
                         <li><a href="javascript:history.go(-1)">Return</a></li>
-                        <li><a>Delete</a></li>
+                        <li><a id="delete">Delete</a></li>
                         <li><a id="download">Download PDF</a></li>
                     </ul>
                 </div>
                 <div id = "wholeNote">
                     <div class="row">
+                        <label id="id" style="display: none"></label>
                         <h1 align="center"><label id = "title"></label></h1>
                         <span style="margin-left: 60%">
                     <label id = "author"></label>
@@ -88,6 +91,7 @@
 <script src="js/jquery.ajaxchimp.min.js"></script>
 <script src="js/jspdf.debug.js"></script>
 <script src="js/html2canvas.js"></script>
+<script src="js/sweet-alert.js"></script>
 <!--<script src="script/renderPDF.js"></script>-->
 
 <script src="js/script.js"></script>

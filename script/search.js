@@ -49,7 +49,7 @@ function search(keywords) {
                 )
             }
         },
-        error: function (xhr, states, error) {
+        error: function (xhr, status, error) {
             console.log(states);
             
         }

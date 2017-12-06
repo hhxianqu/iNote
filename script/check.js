@@ -26,6 +26,7 @@ function checkNote(id) {
             id: id,
         },
         success: function (result) {
+            document.getElementById("id").innerText = result.id;
             document.getElementById("title").innerText = result.title;
             document.getElementById("author").innerText = result.username;
             document.getElementById("date").innerText = result.time;
@@ -37,6 +38,47 @@ function checkNote(id) {
         }
     });
 }
+
+$("#delete").click(function () {
+    let id = $("#id").val();
+    $.ajax({
+        type: 'POST',
+        url: 'php/delete.php',
+        data: {
+            id: id,
+        },
+        success: function (result) {
+            if (result.isNormal) {
+                swal({
+                    title: result.message,
+                    type: 'success',
+                    confirmButtonText: '确认',
+                },
+                    function (isConfirm) {
+                        console.log("success");
+                        if(isConfirm) {
+                            window.location.href = 'note.html';
+                        }
+                    })
+            } else {
+                swal({
+                    title: result.message,
+                    type: 'error',
+                    confirmButtonText: '确认',
+                },
+                    function (isConfirm) {
+                        console.log("fails");
+                        if(isConfirm) {
+                            window.location.href = 'note.html';
+                        }
+                    })
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log(status);
+        }
+    })
+});
 
 $("#download").click(function () {
     let doc = new jsPDF();

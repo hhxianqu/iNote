@@ -15,14 +15,14 @@
     class EditorMdUploader
     {
         public $files;                          // $_FILES数组
-        public $fileExit;                       // 文件扩展名
+        public $fileExt;                        // 文件扩展名
         public $saveName;                       // 最终保存的文件名
         public $saveURL;                        // 最终保存URL地址
         public $savePath;                       // 保存本地文件路径
-        public $randomLength   = 'YmdHis';      // 生成随机文件名的长度，当为日期时为日期的格式
+        public $randomLength   = "YmdHis";      // 生成随机文件名的长度，当为日期时为日期的格式
         public $randomNameType = 1;             // 生成随机的形式, NULL为保留原文件名, 1生成时间格式, 2生成随机字符串
         public $formats = array(                // 允许上传的文件格式
-            'gif', 'jpg', 'jpeg', 'png', 'bmp'
+            'gif', 'jpg', 'jpeg', 'png', 'bmp', 'JPG', 'JPEG'
         );
         public $maxSize        = 1024;          // 最大上传文件大小，单位KB
         public $cover          = true;          // 是否覆盖同名文件, 1覆盖,0不覆盖
@@ -113,7 +113,7 @@
 
             $this->fileExt  = $this->getFileExt($this->files["name"]); //取得扩展名
             
-            $this->setSeveName();
+            $this->setSaveName();
             
             return $this->moveFile();
         }
@@ -251,7 +251,7 @@
          * @return  void
          */
         
-         private function setSeveName()
+         private function setSaveName()
          {             
             $this->saveName = $this->randomFileName().".".$this->fileExt;
              

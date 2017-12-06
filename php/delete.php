@@ -21,7 +21,7 @@ if (isset($_POST['id'])) {
         $response = new Response(true, "删除成功");
         echo $response->toJson();
     } else {
-        $response = new Response(false, "笔记不存在");
+        $response = new Response(false, $db->lastErrorMsg());
         echo $response->toJson();
     }
 } else {

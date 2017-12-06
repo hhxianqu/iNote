@@ -4004,8 +4004,8 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
     margin-left: 0
 }
 
-.nav-justified {
-    width: 100%
+.nav-justify {
+    width: 40%
 }
 
 .nav-justified > li {
@@ -4014,7 +4014,8 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 
 .nav-justified > li > a {
     margin-bottom: 5px;
-    text-align: center
+    text-align: center；
+
 }
 
 .nav-justified > .dropdown .dropdown-menu {

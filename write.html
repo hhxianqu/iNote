@@ -119,10 +119,25 @@
                     success: function (result, status, xhr) {
                         if (result.isNormal) {
                             // TODO 成功
-                            alert(result.message);
+                            swal({
+                                    title: result.message,
+                                    type: "success",
+                                    confirmButtonText: "Confirm",
+                                    closeOnConfirm: false
+                                },
+                                function(isConfirm) {
+                                    if(isConfirm) {
+                                        window.location.href = 'note.html';
+                                    }
+                                })
                         } else {
                             // TODO 失败
-                            alert(result.message);
+                            swal({
+                                    title: result.message,
+                                    type: "error",
+                                    confirmButtonText: "Confirm",
+                                    closeOnConfirm: true
+                                })
                         }
                     },
                     error: function (xhr, status, error) {

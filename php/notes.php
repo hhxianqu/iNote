@@ -1,5 +1,9 @@
 <?php
 /**
+ * 获取用户笔记列表
+ * 用户名通过cookie获取
+ * 可选参数 notebook 指定笔记本名称，获取该笔记本中笔记
+ *
  * Created by PhpStorm.
  * User: huangxiao
  * Date: 2017/12/5
@@ -15,7 +19,14 @@ if (isset($_COOKIE["user"])) {
 
     $result = array();
 
-    $sql = "select * from note where username='$username' order by time desc;";
+    $sql = "select * from note where username = '$username' ";
+
+    if (isset($_POST["notebook"])) {
+        $notebook = $_POST["notebook"];
+        $sql .= " and notebook = '$notebook' ";
+    }
+    $sql .= "order by time desc";
+
     $res = $db->query($sql);
 
     $i = 0;
@@ -25,7 +36,8 @@ if (isset($_COOKIE["user"])) {
                 "id"        =>  $row['id'],
                 "username"  =>  $row['username'],
                 "title"     =>  $row['title'],
-                "time"      =>  $row['time']
+                "time"      =>  $row['time'],
+                "notebook"  =>  $row['notebook']
             );
             $result[$i++] = $note;
         }
@@ -33,4 +45,7 @@ if (isset($_COOKIE["user"])) {
     } else {
         echo $result;
     }
+} else {
+    $response = new Response(false, "您尚未登录");
+    echo $response->toJson();
 }

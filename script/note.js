@@ -30,7 +30,6 @@ function preLoader() {
                             '<span>Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
                             '</div>' +
                             '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
-                            '<div id="content"></div>'+
                             '</div>' +
                     '</th>'+
                     '</tr>' +

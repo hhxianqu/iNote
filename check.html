@@ -47,23 +47,26 @@
     </nav>
 </header>
 
-        <div class="container" style="padding-left: 100px; padding-right: 100px">
+        <div class="container" style="padding-left: 90px; padding-right: 90px">
             <div style="padding: 100px">
                 <div class="row">
                     <ul class="nav navbar-right nav-tabs">
                         <li><a href="javascript:history.go(-1)">Return</a></li>
                         <li><a>Delete</a></li>
+                        <li><a id="download">Download PDF</a></li>
                     </ul>
                 </div>
-                <div class="row">
-                    <h1 align="center"><label id = "title"></label></h1>
-                    <span style="margin-left: 60%">
+                <div id = "wholeNote">
+                    <div class="row">
+                        <h1 align="center"><label id = "title"></label></h1>
+                        <span style="margin-left: 60%">
                     <label id = "author"></label>
                     <label id = "date" style="margin-left: 5%"></label>
                 </span>
-                </div>
+                    </div>
 
-                <div id="details">
+                    <div id="details">
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,6 +86,10 @@
 <script src="js/jquery.shuffle.js"></script>
 <script src="js/owl.carousel.js"></script>
 <script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jspdf.debug.js"></script>
+<script src="js/html2canvas.js"></script>
+<!--<script src="script/renderPDF.js"></script>-->
+
 <script src="js/script.js"></script>
 <script src="script/check.js"></script>
 </html>

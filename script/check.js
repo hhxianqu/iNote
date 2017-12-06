@@ -1,6 +1,7 @@
 /**
  * Created by apple on 2017/12/5.
  */
+
 $().ready(function () {
     checkNote(getQueryVariable("id"));
 });
@@ -36,3 +37,16 @@ function checkNote(id) {
         }
     });
 }
+
+$("#download").click(function () {
+    let doc = new jsPDF();
+    html2canvas($('#wholeNote'), {
+        onrendered: function(canvas) {
+            let imgData = canvas.toDataURL('images');
+            let doc = new jsPDF('p', 'px', 'a3');
+            doc.addImage(imgData, 'PNG', 25, 10, 0, 0);
+            doc.save('test.pdf');
+        }
+    });
+
+});

@@ -24,8 +24,8 @@ function checkNote(id) {
         data: {
             id: id,
         },
-        success: function (content) {
-            document.getElementById("details").innerHTML = content;
+        success: function (result) {
+            document.getElementById("details").innerHTML = result.content;
         },
         error: function (xhr, status, error) {
             console.log(xhr.status);

@@ -6,15 +6,13 @@
  * Time: 下午4:45
  */
 
-header("Content-Type:text/html");
+header("Content-Type:application/json;charset=utf-8");
 
 require ('datautil.php');
 
 $id = $_POST['id'];
 
-$sql = "select content from note where id=$id";
-$res = $db->querySingle($sql);
+$sql = "select * from note where id=$id";
+$res = $db->querySingle($sql, true);
 
-if ($res) {
-    echo $res;
-}
+echo json_encode($res);

@@ -25,7 +25,7 @@
 
     <![endif]-->
 </head>
-<body style="background-color: whitesmoke">
+<body style="background: url('images/background.jpg')">
         <header class="st-navbar">
             <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
                 <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
@@ -46,27 +46,32 @@
             </nav>
         </header>
 
-        <div style="padding-right: 175px; padding-left: 175px">
-            <section data-stellar-background-ratio="0.4">
-                <div style = "padding: 100px 0;">
-                    <div class="col-sm-7"> </div>
-                    <div class="widgets col-sm-5">
-                        <div class="widget">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search..." id="keyword">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default btn-lg" id="search">
-                                    <i class="fa fa-search"></i>
+        <div class="container" style="padding-top: 100px; background-color: rgba(255, 255, 255, 0.25)">
+            <div style="padding-right: 175px; padding-left: 175px">
+                <section data-stellar-background-ratio="0.4">
+                    <div style = "padding: 100px 0;">
+                        <div class="col-sm-6"> </div>
+                        <div class="widgets col-sm-6">
+                            <div class="widget">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search..." id="keyword"
+                                           style="background-color: rgba(255, 255, 255, 0.35); -webkit-text-fill-color: white">
+                                    <span class="input-group-btn">
+                                <button class="btn btn-default btn-lg" id="search"
+                                        style="background-color: rgba(255, 255, 255, 0.4)">
+                                    <i class="fa fa-search" style="color: white"></i>
                                 </button>
                             </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <table id="searchRes"></table>
+                <table id="searchRes"></table>
+            </div>
         </div>
+
 
 
     </body>

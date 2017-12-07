@@ -19,19 +19,17 @@ if (isset($_COOKIE["user"])) {
     $username = $_COOKIE["user"];
 
     $result = array();
-    $sql = "select * from notebook where username = '$username'";
+    $sql = "select notebook.*, count(note.id) as number
+            from notebook
+            left join note
+            on notebook.username = note.username and notebook.name = note.notebook
+            where notebook.username = '$username';";
     $res = $db->query($sql);
 
     $i = 0;
     if ($res) {
         while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-            $notebook = array(
-                "id"            =>  $row['id'],
-                "username"      =>  $row['username'],
-                "name"          =>  $row['name'],
-                "description"   =>  $row['description']
-            );
-            $result[$i++] = $notebook;
+            $result[$i++] = $row;
         }
         echo json_encode($result);
     } else {

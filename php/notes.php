@@ -32,14 +32,7 @@ if (isset($_COOKIE["user"])) {
     $i = 0;
     if ($res) {
         while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-            $note = array(
-                "id"        =>  $row['id'],
-                "username"  =>  $row['username'],
-                "title"     =>  $row['title'],
-                "time"      =>  $row['time'],
-                "notebook"  =>  $row['notebook']
-            );
-            $result[$i++] = $note;
+            $result[$i++] = $row;
         }
         echo json_encode($result);
     } else {

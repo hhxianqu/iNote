@@ -61,8 +61,8 @@ function getNotebooks() {
                     '<tr>' +
                     '<th>' +
                     '<a>'+ book.name +
-                    ' <span class="badge pull-right" ></span>' +
                     '</a>' +
+                    '<span class="badge" style="margin-left: 153px">' + book.number + '</span>' +
                     '</th>' +
                     '</tr>'
                 )
@@ -73,6 +73,38 @@ function getNotebooks() {
         }
     })
 }
-function createBook(bookName, description) {
 
+$("#create").click(function () {
+    let detail = $("#details").val();
+    let bookname = $("#bookname").val();
+    createBook(bookname, detail);
+});
+
+function createBook(bookName, description) {
+    $.ajax({
+        type: 'POST',
+        url: 'php/notebook.create.php',
+        data: {
+            name: bookName,
+            description: description,
+        },
+        success : function (result) {
+            if (result.isNormal) {
+                swal({
+                    title: result.message,
+                    type: 'success',
+                    closeOnConfirm: false
+                },
+                    function (isConfirm) {
+                        window.location.href = "note.html"
+                    }
+                )
+            } else {
+                swal({
+                    title: result.message,
+                    type: 'error'
+                })
+            }
+        }
+    })
 }

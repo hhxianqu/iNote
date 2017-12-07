@@ -21,9 +21,11 @@ if (isset($_COOKIE["user"])) {
     $result = array();
     $sql = "select notebook.*, count(note.id) as number
             from notebook
-            left join note
-            on notebook.username = note.username and notebook.name = note.notebook
-            where notebook.username = '$username';";
+              left join note
+                on notebook.username = note.username and notebook.name = note.notebook
+            where notebook.username = '$username'
+            group by notebook.id
+            order by number desc;";
     $res = $db->query($sql);
 
     $i = 0;

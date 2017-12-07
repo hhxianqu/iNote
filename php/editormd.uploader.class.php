@@ -2,7 +2,7 @@
 
    /**
     *
-    * Editor.md PHP简易上传类（仅供演示用，生产环境使用还需谨慎考虑）
+    * Editor.md PHP简易上传类
     *
     * @FileName: editormd.uploader.class.php
     * @Auther: Pandao

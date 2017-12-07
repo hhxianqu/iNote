@@ -1,6 +1,3 @@
-/**
- * Created by apple on 2017/12/5.
- */
 
 $().ready(function () {
     checkNote(getQueryVariable("id"));

@@ -42,7 +42,6 @@ $("#signIn").click(function() {
     });
 });
 
-// TODO 无法隐藏
 $("#username").click(function () {
    hideAllDiv();
 });

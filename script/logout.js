@@ -1,6 +1,3 @@
-/**
- * Created by apple on 2017/12/7.
- */
 
 $("#logout").click(function () {
     $.ajax({

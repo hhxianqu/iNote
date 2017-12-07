@@ -1,6 +1,4 @@
-/**
- * Created by apple on 2017/12/5.
- */
+
 $().ready(function () {
     getNotebooks();
     preLoader();

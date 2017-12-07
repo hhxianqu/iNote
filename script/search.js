@@ -1,6 +1,3 @@
-/**
- * Created by apple on 2017/12/6.
- */
 
 $().ready(function () {
     $("#searchRes").html("");

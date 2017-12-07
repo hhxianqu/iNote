@@ -26,7 +26,7 @@
 
     <![endif]-->
 </head>
-    <body>
+    <body style="background: url('images/background.jpg')">
         <header class="st-navbar">
             <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
                 <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
@@ -47,153 +47,149 @@
             </nav>
         </header>
 
-        <section class="blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-title st-center">
-                            <h3 id="checkbook">Your Notes</h3>
-                        </div>
+        <div class="container" style="padding-top: 100px; background-color: rgba(255, 255, 255, 0.25)">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title st-center">
+                        <h3 id="checkbook" style="-webkit-text-fill-color: white">Your Notes</h3>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <style>
-                        #detailDiv {
-                            display: none;
-                            margin-left: 125px;
-                            background-color: rgba(0, 170, 170, 0.2);
-                            border-radius: 2em;
-                            width: 875px;
-                        }
-                    </style>
-                    <div id="detailDiv">
-                        <span class="text-primary" style="margin-left: 65px">简介：</span>
-                        <p class="text-justify" id="detail" style="margin-left: 80px"></p>
-                    </div>
+            <div class="row">
+                <style>
+                    #detailDiv {
+                        display: none;
+                        margin-left: 125px;
+                        background-color: rgba(195, 214, 172, 0.15);
+                        border-radius: 2em;
+                        width: 875px;
+                    }
+                    #detailDiv h5 {
+                        margin-left: 65px;
+                        -webkit-text-fill-color: whitesmoke;
+                        padding-top: 10px
+                    }
+                </style>
+                <div id="detailDiv">
+                    <h5 class="text-primary">简介：</h5>
+                    <p class="text-justify" id="detail" style="margin-left: 80px; -webkit-text-fill-color: whitesmoke"></p>
+                </div>
 
-                    <div class="col-md-7" style="padding-left: 80px">
-                        <table id="noteTable"></table>
-                    </div>
-                    <div class="col-md-5" style="padding-right: 80px">
-                        <div class="widgets">
-                            <div class="widget">
-                                <div align="center">
-                                    <a class="btn btn-default-a" href="write.html">
-                                        write new notes
-                                        <div class="glyphicon"><i class="glyphicon-pencil"></i></div>
-                                    </a>
-                                </div>
+                <div class="col-md-7" style="padding-left: 80px">
+                    <table id="noteTable"></table>
+                </div>
+                <div class="col-md-5" style="padding-right: 80px">
+                    <div class="widgets">
+                        <div class="widget">
+                            <div align="center">
+                                <a class="btn btn-default-a" href="write.html">
+                                    write new notes
+                                    <div class="glyphicon"><i class="glyphicon-pencil"></i></div>
+                                </a>
                             </div>
-                            <div class="widget">
-                                <span class="widget-title">Notebooks
-                                    <a class="btn btn-group-sm btn-lg scroll" data-toggle="modal" data-target="#newBook"  role="button"><i class="fa fa-plus"></i></a>
-                                    <div class="modal fade" id="newBook" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog" style="margin-top: 175px">
-                                            <div class="modal-content">
-                                                <div class="modal-header" align="center">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h3>Details</h3>
-                                                    <div style="padding-top: 20px">
-                                                        <div class="col-sm-3">
-                                                            <label style="font-size: 16px">笔记本名字: </label>
-                                                        </div>
-                                                        <div class="col-sm-9">
-                                                            <input type="text" id="bookname" class="input-sm"
-                                                                   align="center" placeholder="名字"
-                                                                   style="border-radius: 2em; width: 275px; height: 40px">
-                                                        </div>
-                                                        <hr width="10px">
-                                                        <div class="col-sm-3">
-                                                            <label style="font-size: 16px">笔记本描述: </label>
-                                                        </div>
-                                                        <div class="col-sm-9">
-                                                            <textarea type="text" id="details" class="input-sm"
-                                                                      style="border-radius: 1em; width: 300px; height: 175px"
-                                                                      placeholder="详细描述"></textarea>
-                                                        </div>
-
-                                                        <hr width="10px">
-                                                    </div>
-                                                    <button class="btn btn-primary" id="create"> 创建 </button>
+                        </div>
+                        <div class="widget">
+                            <span class="widget-title" style="-webkit-text-fill-color: white">Notebooks</span>
+                            <a class="btn btn-group-sm btn-lg scroll" data-toggle="modal" data-target="#newBook"  role="button"><i class="fa fa-plus"></i></a>
+                            <div class="modal fade" id="newBook" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" style="margin-top: 175px">
+                                    <div class="modal-content">
+                                        <div class="modal-header" align="center">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h3>Details</h3>
+                                            <div style="padding-top: 20px">
+                                                <div class="col-sm-3">
+                                                    <label style="font-size: 16px">笔记本名字: </label>
                                                 </div>
+                                                <div class="col-sm-9">
+                                                    <input type="text" id="bookname" class="input-sm"
+                                                           align="center" placeholder="名字"
+                                                           style="border-radius: 2em; width: 275px; height: 40px">
+                                                </div>
+                                                <hr width="10px">
+                                                <div class="col-sm-3">
+                                                    <label style="font-size: 16px">笔记本描述: </label>
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <textarea type="text" id="details" class="input-sm"
+                                                              style="border-radius: 1em; width: 300px; height: 175px"
+                                                              placeholder="详细描述"></textarea>
+                                                </div>
+
+                                                <hr width="10px">
                                             </div>
+                                            <button class="btn btn-primary" id="create"> 创建 </button>
                                         </div>
                                     </div>
-                                </span>
-
-                                <table id="notebook"></table>
-                            </div>
-                            <div class="widget">
-                                <h2 class="widget-title">Recent Post</h2>
-                                <ul>
-                                    <li>
-                                        <div class="recent-post clearfix">
-                                            <a href="#" class="post-thumb"><img src="images/post-thumb-sm.jpg"></a>
-                                            <h2 class="post-title">
-                                                <a href="#">A example blog post with image</a>
-                                            </h2>
-                                            <div class="post-meta">
-                                                <span>Posted in <a href="#">WordPress</a></span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="recent-post clearfix">
-                                            <h2 class="post-title">
-                                                <a href="#">A example blog post with image</a>
-                                            </h2>
-                                            <div class="post-meta">
-                                                <span>Posted in <a href="#">WordPress</a></span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="recent-post clearfix">
-                                            <h2 class="post-title">
-                                                <a href="#">A example blog post with image</a>
-                                            </h2>
-                                            <div class="post-meta">
-                                                <span>Posted in <a href="#">WordPress</a></span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="recent-post clearfix">
-                                            <h2 class="post-title">
-                                                <a href="#">A example blog post with image</a>
-                                            </h2>
-                                            <div class="post-meta">
-                                                <span>Posted in <a href="#">WordPress</a></span>
-                                            </div>
-
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div id="tag_cloud-3" class="widget widget_tag_cloud">
-                                <h2 class="widget-title">Tags</h2>
-                                <div class="tagcloud">
-                                    <a href="#">bootstrap3</a>
-                                    <a href="#">css</a>
-                                    <a href="#">html</a>
-                                    <a href="#">js</a>
-                                    <a href="#">php</a>
-                                    <a href="#">wordpress</a>
-                                    <a href="#">jquery</a>
-                                    <a href="#">less</a>
-                                    <a href="#">editor</a>
-                                    <a href="#">responsive</a>
                                 </div>
+                            </div>
+
+                            <table id="notebook"></table>
+                        </div>
+                        <div class="widget">
+                            <h2 class="widget-title" style="-webkit-text-fill-color: white">Recent Post</h2>
+                            <ul>
+                                <li>
+                                    <div class="recent-post clearfix">
+                                        <a class="post-thumb"><img src="images/post-thumb-sm.jpg"></a>
+                                        <h2 class="post-title">
+                                            <a>A example blog post with image</a>
+                                        </h2>
+                                        <div class="post-meta" style="-webkit-text-fill-color: white">
+                                            <span>Posted in <a>WordPress</a></span>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="recent-post clearfix">
+                                        <h2 class="post-title">
+                                            <a href="#">A example blog post with image</a>
+                                        </h2>
+                                        <div class="post-meta" style="-webkit-text-fill-color: white">
+                                            <span>Posted in <a href="#">WordPress</a></span>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="recent-post clearfix">
+                                        <h2 class="post-title">
+                                            <a href="#">A example blog post with image</a>
+                                        </h2>
+                                        <div class="post-meta" style="-webkit-text-fill-color: white">
+                                            <span>Posted in <a href="#">WordPress</a></span>
+                                        </div>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="tag_cloud-3" class="widget widget_tag_cloud" style="-webkit-text-fill-color: white">
+                            <h2 class="widget-title">Tags</h2>
+                            <div class="tagcloud">
+                                <style>
+                                    .tagcloud a {
+                                        -webkit-text-fill-color: white
+                                    }
+                                </style>
+                                <a href="#">bootstrap3</a>
+                                <a href="#">css</a>
+                                <a href="#">html</a>
+                                <a href="#">js</a>
+                                <a href="#">php</a>
+                                <a href="#">wordpress</a>
+                                <a href="#">jquery</a>
+                                <a href="#">less</a>
+                                <a href="#">editor</a>
+                                <a href="#">responsive</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </body>
 
     <script src="js/jquery.min.js"></script>

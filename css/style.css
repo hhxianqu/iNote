@@ -329,6 +329,7 @@ h6 {
 .section-title {
   margin-bottom: 70px;
 }
+
 .section-title h3 {
   font-family: "Oswald";
   text-transform: uppercase;
@@ -1684,3 +1685,5 @@ footer.site-footer a:hover {
     width: 25%;
   }
 }
+
+

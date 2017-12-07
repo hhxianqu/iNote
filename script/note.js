@@ -36,12 +36,10 @@ function loop(notes) {
             '<div class="post-meta">' +
             '<span class="author">' +
             '<img src="images/author.jpg" alt="" width="40px" height="40px">' +
-            '<span style="margin-left: 10px">' + eachNote.username + '</span>'+
-            '</span>,' +
-            '<span>Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
+            '<span style="margin-left: 10px; -webkit-text-fill-color: white"> ' + eachNote.username + ' , Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
             '</div>' +
             '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
-            '<span>' + eachNote.notebook + '</span>' +
+            '<span style="-webkit-text-fill-color: white"> ' + eachNote.notebook + '</span>' +
             '</div>' +
             '</th>'+
             '</tr>' +

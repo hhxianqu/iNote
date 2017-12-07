@@ -8,16 +8,14 @@ $().ready(function () {
 
 /**
  * 加载用户笔记
- * @param username
  */
 function preLoader() {
     $.ajax({
         type: 'POST',
         url: 'php/notes.php',
-        success: function (notesList) {
-            // console.log(notesList);
-            for (let i = 0; i < notesList.length; i++){
-                let eachNote = notesList[i];
+        success: function (result) {
+            for (let i = 0; i < result.length; i++){
+                let eachNote = result[i];
                 $("#noteTable").append(
                     '<tr>' +
                         '<th>'+
@@ -42,8 +40,7 @@ function preLoader() {
             }
         },
         error: function (xhr, status, error) {
-            console.log(xhr.status);
-            console.log(status);
+            alert(xhr.responseText);
         }
     });
 }

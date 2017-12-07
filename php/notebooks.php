@@ -39,6 +39,6 @@ if (isset($_COOKIE["user"])) {
     }
 
 } else {
-    $response = new Response(false, "您尚未登录");
-    echo $response->toJson();
+    header('HTTP/1.1 401 Unauthorized');
+    echo "您尚未登录";
 }

@@ -22,13 +22,14 @@ function preLoader() {
                         '<th>'+
                         '<div class="blog-post">' +
                             '<div class="post-meta">' +
-                            '<span class="author">' +
-                            '<label>' + '<img src="images/author.jpg" alt="" width="40px" height="40px">' +
-                            eachNote.username + '</label>'+
-                            '</span>,' +
-                            '<span>Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
-                            '</div>' +
-                            '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
+                                '<span class="author">' +
+                                '<img src="images/author.jpg" alt="" width="40px" height="40px">' +
+                                '<span style="margin-left: 10px">' + eachNote.username + '</span>'+
+                                '</span>,' +
+                                '<span>Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
+                                '</div>' +
+                                '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
+                                '<span>' + eachNote.notebook + '</span>' +
                             '</div>' +
                     '</th>'+
                     '</tr>' +

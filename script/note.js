@@ -4,6 +4,7 @@
 $().ready(function () {
     getNotebooks();
     preLoader();
+    hideDiv("detailDiv");
     }
 );
 
@@ -15,36 +16,44 @@ function preLoader() {
         type: 'POST',
         url: 'php/notes.php',
         success: function (result) {
-            for (let i = 0; i < result.length; i++){
-                let eachNote = result[i];
-                $("#noteTable").append(
-                    '<tr>' +
-                        '<th>'+
-                        '<div class="blog-post">' +
-                            '<div class="post-meta">' +
-                                '<span class="author">' +
-                                '<img src="images/author.jpg" alt="" width="40px" height="40px">' +
-                                '<span style="margin-left: 10px">' + eachNote.username + '</span>'+
-                                '</span>,' +
-                                '<span>Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
-                                '</div>' +
-                                '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
-                                '<span>' + eachNote.notebook + '</span>' +
-                            '</div>' +
-                    '</th>'+
-                    '</tr>' +
-                    '<script>' +
-                    '$("#' + eachNote.id + '").click(function() {' +
-                    'window.location.href = "check.html?id=" + ' + eachNote.id + ';' +
-                    '})' +
-                    '</script>'
-                )
-            }
+            loop(result);
         },
         error: function (xhr, status, error) {
             alert(xhr.responseText);
         }
     });
+}
+
+/**
+ * 循环加载笔记
+ * @param notes
+ */
+function loop(notes) {
+    for (let i = 0; i < notes.length; i++){
+        let eachNote = notes[i];
+        $("#noteTable").append(
+            '<tr>' +
+            '<th>'+
+            '<div class="blog-post">' +
+            '<div class="post-meta">' +
+            '<span class="author">' +
+            '<img src="images/author.jpg" alt="" width="40px" height="40px">' +
+            '<span style="margin-left: 10px">' + eachNote.username + '</span>'+
+            '</span>,' +
+            '<span>Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
+            '</div>' +
+            '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
+            '<span>' + eachNote.notebook + '</span>' +
+            '</div>' +
+            '</th>'+
+            '</tr>' +
+            '<script>' +
+            '$("#' + eachNote.id + '").click(function() {' +
+                'window.location.href = "check.html?id=" + ' + eachNote.id + ';' +
+            '})' +
+            '</script>'
+        )
+    }
 }
 
 /**
@@ -55,17 +64,23 @@ function getNotebooks() {
         type: 'POST',
         url: 'php/notebooks.php',
         success: function (booklist) {
-            console.log(booklist);
             for (let i = 0; i < booklist.length; i++) {
                 let book = booklist[i];
                 $("#notebook").append(
                     '<tr>' +
                     '<th>' +
-                    '<a>'+ book.name +
-                    '</a>' +
-                    '<span class="badge" style="margin-left: 153px">' + book.number + '</span>' +
+                    '<a id="' + book.id +'">' + book.name + '</a>' +
+                    '<span class="badge" style="margin-left: 53px">' + book.number + '</span>' +
                     '</th>' +
-                    '</tr>'
+                    '</tr>' +
+                    '<script>' +
+                    '$("#' + book.id + '").click(function() {' +
+                        'checkNotebook("' + book.name + '");' +
+                        'showDiv("detailDiv");' +
+                        '$("#checkbook").text("' + book.name + '");' +
+                        '$("#detail").text("' + book.description + '")' +
+                    '})' +
+                    '</script>'
                 )
             }
         },
@@ -75,13 +90,58 @@ function getNotebooks() {
     })
 }
 
+/**
+ * 显示笔记本详情
+ * @param bookname
+ */
+function checkNotebook(bookname) {
+    $.ajax({
+        type: 'POST',
+        url: 'php/notes',
+        data: {
+            notebook: bookname
+        },
+        success: function (noteList) {
+            document.getElementById("noteTable").innerHTML = "";
+            loop(noteList);
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.status);
+        }
+
+    })
+}
+
 $("#create").click(function () {
     let detail = $("#details").val();
     let bookname = $("#bookname").val();
     createBook(bookname, detail);
 });
 
+
+/**
+ * 判断笔记本名字是否合法
+ * @param content
+ * @returns {boolean}
+ */
+function isContentValid(content) {
+    let re = /\s+/;
+    return !(content === "" || re.test(content));
+}
+
+/**
+ * 创建新的笔记本
+ * @param bookName
+ * @param description
+ */
 function createBook(bookName, description) {
+    if (!isContentValid(bookName)) {
+        swal({
+            title: '笔记本名字不能为空！',
+            type: 'error'
+        });
+        return;
+    }
     $.ajax({
         type: 'POST',
         url: 'php/notebook.create.php',
@@ -108,4 +168,22 @@ function createBook(bookName, description) {
             }
         }
     })
+}
+
+/**
+ * 隐藏div
+ * @param divName
+ */
+function hideDiv(divName) {
+    let dif = document.getElementById(divName);
+    dif.style.display = "none";
+}
+
+/**
+ * 显示div
+ * @param divName
+ */
+function showDiv(divName) {
+    let dif = document.getElementById(divName);
+    dif.style.display = "block";
 }

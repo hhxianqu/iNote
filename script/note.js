@@ -2,6 +2,7 @@
  * Created by apple on 2017/12/5.
  */
 $().ready(function () {
+    getNotebooks();
     preLoader();
     }
 );
@@ -45,3 +46,33 @@ function preLoader() {
     });
 }
 
+/**
+ * 加载用户笔记本列表
+ */
+function getNotebooks() {
+    $.ajax({
+        type: 'POST',
+        url: 'php/notebooks.php',
+        success: function (booklist) {
+            console.log(booklist);
+            for (let i = 0; i < booklist.length; i++) {
+                let book = booklist[i];
+                $("#notebook").append(
+                    '<tr>' +
+                    '<th>' +
+                    '<a>'+ book.name +
+                    ' <span class="badge pull-right" ></span>' +
+                    '</a>' +
+                    '</th>' +
+                    '</tr>'
+                )
+            }
+        },
+        error: function (xhr, status, error) {
+            alert(xhr.responseText);
+        }
+    })
+}
+function createBook(bookName, description) {
+
+}

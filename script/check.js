@@ -64,7 +64,7 @@ $("#delete").click(function () {
                     confirmButtonText: '确认',
                 },
                     function (isConfirm) {
-                        console.log("fails");
+                        // console.log("fails");
                         if(isConfirm) {
                             window.location.href = 'note.html';
                         }

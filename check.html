@@ -10,8 +10,6 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-
-
     <link href="css/owl.carousel.css" rel="stylesheet">
     <link href="css/owl.theme.css" rel="stylesheet">
     <link href="css/owl.transitions.css" rel="stylesheet">
@@ -27,7 +25,7 @@
 
     <![endif]-->
 </head>
-<body style="background: url('images/background.jpg')">
+<body style="background: url('images/background_1.jpg')">
 <header class="st-navbar">
     <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
         <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
@@ -49,26 +47,27 @@
     </nav>
 </header>
 
-        <div class="container" style="height: 1920px; padding-left: 90px; padding-right: 90px; background-color: rgba(255, 255, 255, 0.25)" >
+    <div class="container" style="padding-left: 90px; padding-right: 90px; background-color: rgba(255, 255, 255, 0.25)" >
             <div style="padding: 100px">
                 <div class="row">
-                    <ul class="nav navbar-right nav-tabs">
+                    <ul class="nav navbar-right nav-tabs" style="-webkit-text-fill-color: rgb(39,72,98)">
                         <li><a href="javascript:history.go(-1)">Return</a></li>
-                        <li><a id="delete">Delete</a></li>
+                        <li style="display: none"><a id="delete">Delete</a></li>
                         <li><a id="download">Download PDF</a></li>
                     </ul>
                 </div>
-                <div id = "wholeNote"  style="-webkit-text-fill-color: whitesmoke">
+                <div id = "wholeNote">
                     <div class="row">
-                        <label id="id" style="display: none"></label>
-                        <h1 align="center"><label id = "title"></label></h1>
-                        <span style="margin-left: 60%">
-                    <label id = "author"></label>
-                    <label id = "date" style="margin-left: 5%"></label>
-                </span>
+                        <h1 align="center" style="-webkit-text-fill-color: rgba(3,101,100, 0.8)"><label id = "title"></label></h1>
+                        <span style="margin-left: 60%" class="author">
+                            <img src="images/author.jpg" width="40px" height="40px">
+                        </span>
+                        <label id = "author" style="-webkit-text-fill-color: rgb(200,200,169)"></label>
+                        <label id = "date" style="margin-left: 5%; -webkit-text-fill-color: rgb(60,79,57)"></label>
+
                     </div>
 
-                    <div id="details">
+                    <div id="details" style="-webkit-text-fill-color: whitesmoke">
                     </div>
                 </div>
             </div>

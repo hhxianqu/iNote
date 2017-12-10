@@ -1,5 +1,12 @@
 <?php
 /**
+ * 上传笔记
+ * 参数：
+ * title    标题
+ * html     笔记html内容
+ * notebook 所属笔记本名
+ * user通过cookie获取
+ *
  * Created by PhpStorm.
  * User: huangxiao
  * Date: 2017/12/4
@@ -20,10 +27,11 @@ if (isset($_COOKIE["user"])) {
     $title = $_POST["title"];
     $content = $_POST["html"];
     $time = date("Y-m-d H:i:s");
+    $notebook = $_POST["notebook"];
 
     $sql = "insert into 
-            note(username, title, content, time) 
-            values ('$username', '$title', '$content', '$time');";
+            note(username, title, content, time, notebook) 
+            values ('$username', '$title', '$content', '$time', '$notebook');";
 
     $res = $db->exec($sql);
     if ($res) {

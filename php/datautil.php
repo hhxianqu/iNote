@@ -7,16 +7,3 @@
  */
 
 $db = new SQLite3('../data/inote.db');
-
-//$sql = <<<EOF
-//    select * from test;
-//EOF;
-//
-//$ret = $db->query($sql);
-//while ($row = $ret->fetchArray(SQLITE3_ASSOC)) {
-//    echo "id = " . $row['id'] . "\n";
-//    echo "name = " . $row['name'] . "\n";
-//    echo "\n";
-//}
-//
-//$db->close();

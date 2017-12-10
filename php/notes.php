@@ -19,13 +19,18 @@ if (isset($_COOKIE["user"])) {
 
     $result = array();
 
-    $sql = "select * from note where username = '$username' ";
+    $sql = "select n.*, count(c.id) as collections
+            from note n 
+            left join collect c 
+            on n.id = c.note_id 
+            where n.username = '$username' ";
 
     if (isset($_POST["notebook"])) {
         $notebook = $_POST["notebook"];
-        $sql .= " and notebook = '$notebook' ";
+        $sql .= " and n.notebook = '$notebook' ";
     }
-    $sql .= "order by time desc";
+    $sql .= "group by n.id ";
+    $sql .= "order by n.time desc;";
 
     $res = $db->query($sql);
 
@@ -36,7 +41,7 @@ if (isset($_COOKIE["user"])) {
         }
         echo json_encode($result);
     } else {
-        echo $result;
+        die($db->lastErrorMsg());
     }
 } else {
     header('HTTP/1.1 401 Unauthorized');

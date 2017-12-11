@@ -178,13 +178,18 @@ function getCollection() {
                     '<li>' +
                     '<div class="recent-post clearfix">' +
                     '<h2 class="post-title">' +
-                    '<a>'+collection.name +'</a>' +
+                    '<a id="pre-'+ collection.id +'">'+collection.title +'</a>' +
                     '</h2>' +
                     '<div class="post-meta" style="-webkit-text-fill-color: white">' +
-                    '<span>author</span>' +
+                    '<span>'+ collection.username+'</span>' +
                     '</div>' +
                     '</div>' +
-                    '</li>'
+                    '</li>'+
+                    '<script>' +
+                    '$("#pre-' + collection.id + '").click(function() {' +
+                    'window.location.href = "check.html?id=" + ' + collection.id + ';' +
+                    '})' +
+                    '</script>'
                 )
             }
         }

@@ -6,7 +6,7 @@
  * Time: 下午2:28
  */
 
-header("ContentType:application/json;charset=utf-8");
+header("Content-Type:application/json;charset=utf-8");
 
 require ('datautil.php');
 

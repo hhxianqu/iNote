@@ -80,7 +80,7 @@ function getNotebook() {
             for (let i = 0; i < booklist.length; i++) {
                 let book = booklist[i];
                 $("#notebook").append(
-                    '<option class="notebookOption">' +
+                    '<option style="background-color: transparent">' +
                     '<a id="' + book.id +'">' + book.name + '</a>' +
                     '</option>'
                 )

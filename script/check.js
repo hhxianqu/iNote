@@ -82,7 +82,8 @@ $("#download").click(function () {
             let doc = new jsPDF('p', 'px', 'a3');
             doc.addImage(imgData, 'PNG', 25, 10, 0, 0);
             doc.save('test.pdf');
-        }
+        },
+        background: "#fff",
     });
 
 });

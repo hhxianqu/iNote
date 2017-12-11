@@ -36,6 +36,10 @@ function search(keywords) {
                     '<span style="-webkit-text-fill-color: white"> , Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
                     '</div>' +
                     '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
+                    '<span style="-webkit-text-fill-color: white">收录在 <label style="text-decoration-line: underline">'
+                    + eachNote.notebook + '</label> 中' +
+                    '<a style="margin-left: 75px">被 <label style="text-decoration-line: underline">'
+                    + eachNote.collection + '</label> 人收藏</a>' +
                     '</div>' +
                     '</th>'+
                     '</tr>'+

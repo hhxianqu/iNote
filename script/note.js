@@ -37,10 +37,15 @@ function loop(notes) {
             '<div class="post-meta">' +
             '<span class="author">' +
             '<img src="images/author.jpg" width="40px" height="40px">' +
-            '<span style="margin-left: 10px; -webkit-text-fill-color: white"> ' + eachNote.username + ' , Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
+            '<span style="margin-left: 10px; -webkit-text-fill-color: white"> ' +
+                eachNote.username + ' , Noted At <strong id="date">' + eachNote.time + '</strong></span>'+
             '</div>' +
             '<h2 class="post-title"><a id="'+ eachNote.id +'">' + eachNote.title + '</a></h2>' +
-            '<span style="-webkit-text-fill-color: white"> ' + eachNote.notebook + '</span>' +
+            '<span style="-webkit-text-fill-color: white">收录在 <label style="text-decoration-line: underline">'
+                + eachNote.notebook + '</label> 中' +
+            '<a style="margin-left: 75px">被 <label style="text-decoration-line: underline">'
+                + eachNote.collection + '</label> 人收藏</a>' +
+            '</span>' +
             '</div>' +
             '</th>'+
             '</tr>' +
@@ -167,6 +172,9 @@ function createBook(bookName, description) {
     })
 }
 
+/**
+ * 获得收藏列表
+ */
 function getCollection() {
     $.ajax({
         type: 'POST',

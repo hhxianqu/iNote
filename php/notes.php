@@ -19,7 +19,7 @@ if (isset($_COOKIE["user"])) {
 
     $result = array();
 
-    $sql = "select n.*, count(c.id) as collections
+    $sql = "select n.*, count(c.id) as collection
             from note n 
             left join collect c 
             on n.id = c.note_id 

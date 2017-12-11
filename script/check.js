@@ -1,6 +1,7 @@
 
 $().ready(function () {
     checkNote(getQueryVariable("id"));
+    document.getElementById("delete").style.display = "none";
 });
 
 function getQueryVariable(variable) {
@@ -27,6 +28,14 @@ function checkNote(id) {
             document.getElementById("author").innerText = result.username;
             document.getElementById("date").innerText = result.time;
             document.getElementById("details").innerHTML = result.content;
+            if (result.canDelete) {
+                document.getElementById("delete").style.display = "block";
+            }
+            if (result.isCollect) {
+                $("#collect").text("Cancel Collect");
+            } else {
+                $("#collect").text("Collect");
+            }
         },
         error: function (xhr, status, error) {
             console.log(xhr.status);
@@ -88,11 +97,24 @@ $("#download").click(function () {
 
 });
 
-
+/**
+ * 收藏笔记
+ */
 $("#collect").click(function () {
-    collect(getQueryVariable("id"));
+    let isCollected = document.getElementById("collect").innerText;
+    if (isCollected === "Collect") {
+        collect(getQueryVariable("id"));
+    } else {
+        cancelCollection(getQueryVariable("id"));
+
+    }
+
 });
 
+/**
+ * 收藏笔记
+ * @param id
+ */
 function collect(id) {
     $.ajax({
         type: 'POST',
@@ -102,11 +124,45 @@ function collect(id) {
         },
         success: function (result) {
             if (result.isNormal){
-                // console.log(result.message);
                 swal({
                     title: result.message,
                     type: 'success',
                     confirmButtonText: '确认',
+                },
+                function (isConfirm) {
+                    location.reload();
+                })
+            }
+            else {
+                swal({
+                    title: result.message,
+                    type: 'error',
+                    confirmButtonText: '确认'
+                })
+            }
+
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.status);
+        }
+    })
+}
+
+function cancelCollection(id) {
+    $.ajax({
+        type: 'POST',
+        url: 'php/collection.cancel.php',
+        data: {
+            id: id,
+        },
+        success: function (result) {
+            if (result.isNormal){
+                swal({
+                    title: result.message,
+                    type: 'success',
+                    confirmButtonText: '确认',
+                },function (isConfirm) {
+                    location.reload();
                 })
             }
             else {

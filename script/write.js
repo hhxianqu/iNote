@@ -5,19 +5,18 @@
 $().ready(function () {
     getNotebook();
 });
-function submit(title) {
+function submit(title, notebook) {
     $.ajax({
         type: 'POST',
         url: 'php/post.php',
         data: {
             submit: "",
             title: title,
-            username: "huangxiao",
+            notebook: notebook,
             html    : testEditor.getHTML(),
         },
         success: function (result, status, xhr) {
             if (result.isNormal) {
-                // TODO 成功
                 swal({
                         title: result.message,
                         type: "success",
@@ -30,7 +29,6 @@ function submit(title) {
                         }
                     })
             } else {
-                // TODO 失败
                 swal({
                     title: result.message,
                     type: "error",
@@ -59,7 +57,8 @@ $("#submit").click(function () {
         });
         return;
     }
-    submit(title);
+    let notebook = document.getElementById("notebook").value;
+    submit(title, notebook);
 });
 
 function showTitle() {

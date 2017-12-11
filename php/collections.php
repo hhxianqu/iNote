@@ -1,5 +1,8 @@
 <?php
 /**
+ * 获取用户收藏笔记
+ * 无需参数，用户名通过cookie获取
+ *
  * Created by PhpStorm.
  * User: huangxiao
  * Date: 2017/12/10

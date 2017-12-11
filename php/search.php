@@ -13,20 +13,24 @@ require ("datautil.php");
 $keywords = $_GET["keywords"];
 
 $result = array();
-$sql = "select * from note where title like '%$keywords%' order by time desc;";
+
+$sql = "select n.*, count(c.id) as collection
+        from note n 
+          left join collect c 
+            on n.id = c.note_id 
+        where n.title like '%$keywords%' 
+        group by n.id 
+        order by time desc;";
 
 $res = $db->query($sql);
-if ($res) {
-    $i = 0;
-    while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-        $note = array(
-            "id" => $row['id'],
-            "username" => $row['username'],
-            "title" => $row['title'],
-            "time" => $row['time']
-        );
-        $result[$i++] = $note;
-    }
-}
 
-echo json_encode($result);
+$i = 0;
+if ($res) {
+    while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+        $result[$i++] = $row;
+    }
+    echo json_encode($result);
+
+} else {
+    die($db->lastErrorMsg());
+}

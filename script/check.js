@@ -86,3 +86,40 @@ $("#download").click(function () {
     });
 
 });
+
+
+$("#collect").click(function () {
+    collect(getQueryVariable("id"));
+});
+
+function collect(id) {
+    $.ajax({
+        type: 'POST',
+        url: 'php/collect.php',
+        data: {
+            id: id,
+        },
+        success: function (result) {
+            if (result.isNormal){
+                // console.log(result.message);
+                swal({
+                    title: result.message,
+                    type: 'success',
+                    confirmButtonText: '确认',
+                })
+            }
+            else {
+                // console.log(result.message);
+                swal({
+                    title: result.message,
+                    type: 'error',
+                    confirmButtonText: '确认'
+                })
+            }
+
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.status);
+        }
+    })
+}

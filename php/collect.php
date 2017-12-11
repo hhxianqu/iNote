@@ -11,7 +11,7 @@
  * Time: 上午12:02
  */
 
-header('ContentType:application/json;charset=utf-8');
+header('Content-Type:application/json;charset=utf-8');
 
 require ('datautil.php');
 require ('Response.php');

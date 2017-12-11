@@ -3,6 +3,7 @@ $().ready(function () {
     getNotebooks();
     preLoader();
     hideDiv("detailDiv");
+    getCollection();
     }
 );
 
@@ -163,6 +164,31 @@ function createBook(bookName, description) {
                 })
             }
         }
+    })
+}
+
+function getCollection() {
+    $.ajax({
+        type: 'POST',
+        url: 'php/collections',
+        success: function (collections) {
+            for (let i = 0; i < collections.length; i++) {
+                let collection = collections[i];
+                $("#collect").append(
+                    '<li>' +
+                    '<div class="recent-post clearfix">' +
+                    '<h2 class="post-title">' +
+                    '<a>'+collection.name +'</a>' +
+                    '</h2>' +
+                    '<div class="post-meta" style="-webkit-text-fill-color: white">' +
+                    '<span>author</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>'
+                )
+            }
+        }
+
     })
 }
 

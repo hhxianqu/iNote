@@ -17,7 +17,6 @@
     <link href="css/owl.transitions.css" rel="stylesheet">
     <link href="css/sweet-alert.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,7 +25,7 @@
 
     <![endif]-->
 </head>
-<body style="background: url('images/background_2.jpg')">
+<body style="background: url('images/background_2.jpg')" id="view">
 <header class="st-navbar">
     <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
         <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
@@ -35,12 +34,13 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse main-nav" id="sept-main-nav">
+            <div class="collapse navbar-collapse" id="sept-main-nav">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="note.html">Note</a></li>
                             <li class="active"><a>Service</a></li>
                             <li><a href="explore.html">Explore</a></li>
                             <li><a id="logout">Logout</a></li>
+                            <li><a id="screenshot">Screenshot</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
@@ -237,4 +237,7 @@
     <script src="js/sweet-alert.js"></script>
     <script src="js/script.js"></script>
     <script src="script/logout.js"></script>
+
+    <script src="js/html2canvas.js"></script>
+    <script src="script/screenshot.js"></script>
 </html>

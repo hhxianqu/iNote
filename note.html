@@ -26,7 +26,7 @@
 
     <![endif]-->
 </head>
-    <body style="background: url('images/background_2.jpg')">
+    <body style="background: url('images/background_2.jpg')" id="view">
         <header class="st-navbar">
             <nav class="navbar navbar-default navbar-fixed-top clearfix" role="navigation">
                 <div class="container"><!-- Brand and toggle get grouped for better mobile display -->
@@ -35,18 +35,18 @@
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse main-nav" id="sept-main-nav">
+                    <div class="collapse navbar-collapse" id="sept-main-nav">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="active"><a>Note</a></li>
                             <li><a href="service.html">Service</a></li>
                             <li><a href="explore.html">Explore</a></li>
                             <li><a id="logout">Logout</a></li>
+                            <li><a id="screenshot">Screenshot</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
             </nav>
         </header>
-
         <div class="container" style="padding-top: 100px; background-color: rgba(255, 255, 255, 0.25)">
             <div class="row">
                 <div class="col-md-12">
@@ -153,5 +153,7 @@
     <script src="js/script.js"></script>
     <script src="script/note.js"></script>
     <script src="script/logout.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <script src="script/screenshot.js"></script>
 </html>
 

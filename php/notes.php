@@ -15,7 +15,11 @@ header("Content-Type:application/json;charset=utf-8");
 require ('datautil.php');
 
 if (isset($_COOKIE["user"])) {
-    $username = $_COOKIE["user"];
+    $username = $_COOKIE['user'];
+    // 如果传入username参数，则获取此用户笔记
+    if (isset($_POST['username'])) {
+        $username = $_POST["username"];
+    }
 
     $result = array();
 

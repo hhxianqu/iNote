@@ -84,13 +84,39 @@ $("#delete").click(function () {
 });
 
 $("#download").click(function () {
-    let doc = new jsPDF();
-    html2canvas($('#wholeNote'), {
+    html2canvas($("#wholeNote"),  {
         onrendered: function(canvas) {
-            let imgData = canvas.toDataURL('images');
-            let doc = new jsPDF('p', 'px', 'a3');
-            doc.addImage(imgData, 'PNG', 25, 10, 0, 0);
-            doc.save('test.pdf');
+            let contentWidth = canvas.width;
+            let contentHeight = canvas.height;
+
+            //一页pdf显示html页面生成的canvas高度;
+            let pageHeight = contentWidth / 595.28 * 841.89;
+            //未生成pdf的html页面高度
+            let leftHeight = contentHeight;
+            let position = 0;
+
+            let imgWidth = 555.28;
+            let imgHeight = 552.28/contentWidth * contentHeight;
+
+            //设置照片清晰度
+            let pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+            let pdf = new jsPDF('p', 'pt', 'a4');
+
+            //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度
+            if (leftHeight < pageHeight) {
+                pdf.addImage(pageData, 'JPEG', 20, 0, imgWidth, imgHeight );
+            } else {
+                while(leftHeight > 0) {
+                    pdf.addImage(pageData, 'JPEG', 20, position, imgWidth, imgHeight);
+                    leftHeight -= pageHeight;
+                    position -= 841.89;
+                    if(leftHeight > 0) {
+                        pdf.addPage();
+                    }
+                }
+            }
+            pdf.save('test.pdf');
         },
         background: "#fff",
     });

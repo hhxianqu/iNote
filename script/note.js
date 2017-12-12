@@ -1,16 +1,27 @@
 
 $().ready(function () {
     getNotebooks();
-    preLoader();
+    loadNotes();
     hideDiv("detailDiv");
     getCollection();
+});
+
+function getQueryVariable(variable) {
+    let query = window.location.search.substring(1);
+    let vars = query.split("&");
+    for (let i = 0; i < vars.length; i++) {
+        let pair = vars[i].split("=");
+        if(pair[0] === variable) {
+            return pair[1];
+        }
     }
-);
+    return false;
+}
 
 /**
  * 加载用户笔记
  */
-function preLoader() {
+function loadNotes() {
     $.ajax({
         type: 'POST',
         url: 'php/notes.php',
@@ -96,12 +107,12 @@ function getNotebooks() {
  * 显示笔记本详情
  * @param bookname
  */
-function checkNotebook(bookname) {
+function checkNotebook(id) {
     $.ajax({
         type: 'POST',
         url: 'php/notes',
         data: {
-            notebook: bookname
+            notebook: id
         },
         success: function (noteList) {
             document.getElementById("noteTable").innerHTML = "";

@@ -13,7 +13,7 @@ require ("datautil.php");
 $keywords = $_GET["keywords"];
 
 $result = array();
-$result['note'] = array();
+$result['notes'] = array();
 $result['notebook'] = array();
 
 // 获取笔记
@@ -30,7 +30,7 @@ $res = $db->query($sql);
 $i = 0;
 if ($res) {
     while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
-        $result['note'][$i++] = $row;
+        $result['notes'][$i++] = $row;
     }
 } else {
     die($db->lastErrorMsg());

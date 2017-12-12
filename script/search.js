@@ -1,6 +1,7 @@
 
 $().ready(function () {
     $("#searchRes").html("");
+    $("#searchBook").html("");
     let keywords = $("#keyword").val();
     search(keywords);
 });
@@ -13,14 +14,15 @@ $("#search").click(function () {
 });
 
 function search(keywords) {
-    console.log(keywords);
     $.ajax({
         type: 'GET',
         url: 'php/search.php',
         data: {
             keywords: keywords,
         },
-        success: function (notes) {
+        success: function (result) {
+            let notes = result.notes;
+            let notebooks = result.notebook;
             for(let i = 0; i < notes.length; i ++){
                 let eachNote = notes[i];
                 $("#searchRes").append(
@@ -47,6 +49,25 @@ function search(keywords) {
                     '$("#' + eachNote.id + '").click(function() {' +
                     'window.location.href = "check.html?id=" + ' + eachNote.id + ';' +
                     '})' +
+                    '</script>'
+                )
+            }
+
+            for (let i = 0; i < notebooks.length; i ++) {
+                let book = notebooks[i];
+                $("#searchBook").append(
+                    '<tr>' +
+                    '<th>' +
+                    '<a id="' + book.id +'">' + book.name + '</a>' +
+                    '<label style="margin-left: 20px; -webkit-text-fill-color: rgba(255,215,0,0.7)' +
+                    '"> 作者：'+ book.username + '</label>' +
+                    '<span class="badge" style="margin-left: 53px">有笔记数：' + book.number + '</span>' +
+                    '</th>' +
+                    '</tr>' +
+                    '<script>' +
+                    '$("#' + book.id + '").click(function() {' +
+                        'window.location.href = "note.html?id=" + ' + book.id + ';' +
+                        '})' +
                     '</script>'
                 )
             }

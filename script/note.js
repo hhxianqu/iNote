@@ -1,9 +1,15 @@
 
 $().ready(function () {
-    getNotebooks();
-    loadNotes();
-    hideDiv("detailDiv");
-    getCollection();
+    let id = getQueryVariable('id');
+    if (id !== null) {
+        checkNotebook(id);
+        hideDiv("myself");
+    } else {
+        getNotebooks();
+        loadNotes();
+        hideDiv("detailDiv");
+        getCollection();
+    }
 });
 
 function getQueryVariable(variable) {
@@ -15,7 +21,7 @@ function getQueryVariable(variable) {
             return pair[1];
         }
     }
-    return false;
+    return null;
 }
 
 /**
@@ -88,10 +94,7 @@ function getNotebooks() {
                     '</tr>' +
                     '<script>' +
                     '$("#' + book.id + '").click(function() {' +
-                        'checkNotebook("' + book.name + '");' +
-                        'showDiv("detailDiv");' +
-                        '$("#checkbook").text("' + book.name + '");' +
-                        '$("#detail").text("' + book.description + '")' +
+                        'checkNotebook(' + book.id + ');' +
                     '})' +
                     '</script>'
                 )
@@ -105,14 +108,30 @@ function getNotebooks() {
 
 /**
  * 显示笔记本详情
- * @param bookname
+ * @param id
  */
 function checkNotebook(id) {
     $.ajax({
         type: 'POST',
-        url: 'php/notes',
+        url: 'php/notebook.php',
         data: {
-            notebook: id
+            id: id
+        },
+        success: function (result) {
+            showDiv("detailDiv");
+            $("#checkbook").text(result.name);
+            $("#detail").text(result.description);
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.status);
+        }
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: 'php/notes.php',
+        data: {
+            id: id
         },
         success: function (noteList) {
             document.getElementById("noteTable").innerHTML = "";

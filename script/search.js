@@ -66,7 +66,7 @@ function search(keywords) {
                     '</tr>' +
                     '<script>' +
                     '$("#' + book.id + '").click(function() {' +
-                        'window.location.href = "note.html?id=" + ' + book.id + ';' +
+                        'window.location.href = "note.html?id=' + book.id + '";' +
                         '})' +
                     '</script>'
                 )

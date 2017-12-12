@@ -16,9 +16,14 @@ require ('datautil.php');
 
 if (isset($_COOKIE["user"])) {
     $username = $_COOKIE['user'];
-    // 如果传入username参数，则获取此用户笔记
-    if (isset($_POST['username'])) {
-        $username = $_POST["username"];
+    $notebookName = null;
+
+    if (isset($_POST["id"])) {
+        $notebookId = $_POST["id"];
+        $sql = "select name, username from notebook where id = $notebookId";
+        $res = $db->querySingle($sql, true);
+        $username = $res["username"];
+        $notebookName = $res["name"];
     }
 
     $result = array();
@@ -29,10 +34,10 @@ if (isset($_COOKIE["user"])) {
             on n.id = c.note_id 
             where n.username = '$username' ";
 
-    if (isset($_POST["notebook"])) {
-        $notebook = $_POST["notebook"];
-        $sql .= " and n.notebook = '$notebook' ";
+    if ($notebookName !== null) {
+        $sql .= " and n.notebook = '$notebookName' ";
     }
+
     $sql .= "group by n.id ";
     $sql .= "order by n.time desc;";
 

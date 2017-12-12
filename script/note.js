@@ -125,6 +125,30 @@ function checkNotebook(id) {
     })
 }
 
+/**
+ * 显示特定用户的笔记本详情
+ * @param id
+ * @param username
+ */
+function checkUserNotebook(id, username) {
+    $.ajax({
+        type: 'POST',
+        url: 'php/notes',
+        data: {
+            notebook: id,
+            usename: username
+        },
+        success: function (noteList) {
+            document.getElementById("noteTable").innerHTML = "";
+            loop(noteList);
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr.status);
+        }
+
+    })
+}
+
 $("#create").click(function () {
     let detail = $("#details").val();
     let bookname = $("#bookname").val();
